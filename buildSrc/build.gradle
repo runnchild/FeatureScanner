@@ -1,0 +1,18 @@
+// First, apply the publishing plugin
+plugins {
+    id "com.gradle.plugin-publish" version "0.12.0"
+    id "java-gradle-plugin"
+    // Apply other plugins here, e.g. the kotlin plugin for a plugin written in Kotlin
+    // or the groovy plugin if the plugin uses Groovy
+}
+
+repositories {
+    jcenter()
+    google()
+}
+
+gradlePlugin {
+    plugins {
+
+    }
+}

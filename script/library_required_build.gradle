@@ -1,0 +1,41 @@
+import com.gcc.feature.build_src.config.AppInfo
+import com.gcc.feature.build_src.config.Deps
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion AppInfo.compileSdkVersion
+    buildToolsVersion AppInfo.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion AppInfo.minSdkVersion
+        targetSdkVersion AppInfo.targetSdkVersion
+        versionCode AppInfo.versionCode
+        versionName AppInfo.versionName
+
+        testInstrumentationRunner AppInfo.testRunner
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation Deps.android.appcompat
+    implementation Deps.android.core_ktx
+    androidTestImplementation Deps.test.junit_android_ext
+    androidTestImplementation Deps.test.espresso
+    testImplementation Deps.test.mockito
+    testImplementation Deps.test.powermock
+    testImplementation Deps.test.junit
+}
