@@ -1,4 +1,4 @@
-package com.gcc.feature.ground
+package com.gcc.feature.module_main
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.gcc.feature.ground.test", appContext.packageName)
+        assertEquals("com.gcc.feature.module_main.test", appContext.packageName)
     }
 }

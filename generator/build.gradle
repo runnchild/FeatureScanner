@@ -1,10 +1,7 @@
-apply plugin: 'java-library'
-apply plugin: 'kotlin'
+import com.gcc.feature.build_src.Functions
+
+Functions.applyJava(project)
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation project(Functions.projectNameManager.basic)
 }
-
-sourceCompatibility = "7"
-targetCompatibility = "7"
