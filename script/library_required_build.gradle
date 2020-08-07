@@ -1,7 +1,6 @@
 import com.gcc.feature.build_src.config.AppInfo
 import com.gcc.feature.build_src.config.Deps
 
-apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
@@ -30,9 +29,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation Deps.android.appcompat
     implementation Deps.android.core_ktx
+    implementation Deps.android.kotlin_stdlib
     androidTestImplementation Deps.test.junit_android_ext
     androidTestImplementation Deps.test.espresso
     testImplementation Deps.test.mockito

@@ -1,0 +1,3 @@
+import com.gcc.feature.build_src.Functions
+
+Functions.applyLibrary(project)
