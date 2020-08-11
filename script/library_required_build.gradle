@@ -1,8 +1,11 @@
+import com.gcc.feature.build_src.Functions
+import com.gcc.feature.build_src.ProjectManager
 import com.gcc.feature.build_src.config.AppInfo
 import com.gcc.feature.build_src.config.Deps
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion AppInfo.compileSdkVersion
@@ -23,8 +26,18 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-    }
 
+        debug {
+            multiDexEnabled true
+            multiDexKeepFile Functions.getKeepMainDexFilePath(project)
+        }
+    }
+}
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
 }
 
 dependencies {
@@ -32,9 +45,18 @@ dependencies {
     implementation Deps.android.appcompat
     implementation Deps.android.core_ktx
     implementation Deps.android.kotlin_stdlib
+    implementation Deps.android.constraint_layout
+
     androidTestImplementation Deps.test.junit_android_ext
     androidTestImplementation Deps.test.espresso
     testImplementation Deps.test.mockito
     testImplementation Deps.test.powermock
     testImplementation Deps.test.junit
+
+    if (!ProjectManager.isBasicProject(project)) {
+        implementation project(ProjectManager.abs)
+    }
+
+    implementation Deps.framework.router_alibaba_api
+    kapt Deps.framework.router_alibaba_compiler
 }

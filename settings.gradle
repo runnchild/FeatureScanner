@@ -12,3 +12,4 @@ include ':api'
 include ':module_splash'
 include ':module_guide'
 include ':module_main'
+project(":app").name = "zygote"

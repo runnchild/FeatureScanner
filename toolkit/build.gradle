@@ -1,9 +1,10 @@
 import com.gcc.feature.build_src.Functions
+import com.gcc.feature.build_src.ProjectManager
 import com.gcc.feature.build_src.config.Deps
 
 Functions.applyLibrary(project)
 
 dependencies {
-    implementation Deps.tool.util_code
-    implementation project(Functions.projectNameManager.basic)
+    api Deps.tool.util_code
+    implementation project(ProjectManager.basic)
 }

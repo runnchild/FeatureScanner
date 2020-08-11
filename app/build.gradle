@@ -1,3 +1,4 @@
+import com.gcc.feature.build_src.ProjectManager
 import com.gcc.feature.build_src.config.AppInfo
 
 apply plugin: 'com.android.application'
@@ -36,4 +37,12 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    rootProject.subprojects {
+        sub ->
+            if (ProjectManager.isAndroidLibrary(sub)) {
+                println "app dependence library: " + sub.name
+                implementation project(":${sub.name}")
+            }
+    }
 }

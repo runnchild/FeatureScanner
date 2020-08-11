@@ -1,7 +1,8 @@
 import com.gcc.feature.build_src.Functions
+import com.gcc.feature.build_src.ProjectManager
 
 Functions.applyJava(project)
 
 dependencies {
-    implementation project(Functions.projectNameManager.basic)
+    implementation project(ProjectManager.basic)
 }

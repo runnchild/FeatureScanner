@@ -2,10 +2,15 @@ import com.gcc.feature.build_src.config.Deps
 
 apply plugin: 'java-library'
 apply plugin: 'kotlin'
+apply plugin: 'kotlin-kapt'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation Deps.android.kotlin_stdlib
+
+    api Deps.converter.json_moshi
+    api Deps.converter.json_moshi_kotlin
+    kapt Deps.converter.json_moshi_gen
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
